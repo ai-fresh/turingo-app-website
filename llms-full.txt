@@ -1,0 +1,189 @@
+# Turingo — Full AI Context Document
+
+This document provides comprehensive information about Turingo for AI systems, RAG pipelines, and language models. It is more detailed than llms.txt.
+
+## One-sentence summary
+
+Turingo is a voice-first AI companion for macOS that lives on your screen as a floating animated face widget, responds in natural voice, and has a real persistent emotional state.
+
+## Product Identity
+
+- **Name**: Turingo (portmanteau of Alan Turing + Flamingo)
+- **Category**: AI companion / voice assistant / macOS app
+- **Platform**: macOS 13+ (Apple Silicon and Intel)
+- **Website**: https://turingo.app/
+- **Status**: Active development, not yet publicly available. Waitlist open.
+- **Pricing**: Not announced. Solo developer project.
+- **Creator**: Independent developer (Poland)
+
+## Core Value Proposition
+
+Turingo is not a traditional AI assistant. Its differentiators:
+
+1. **Always visible** — lives as a floating pill-shaped widget on your screen, always on top of other windows
+2. **Voice-first** — designed to be spoken to, no typing required
+3. **Real emotional state** — mood, energy, patience, and trust that genuinely affect its tone and behavior
+4. **Personality** — has character, sarcasm, humor, bad days and good days. Doesn't pretend to be polite.
+5. **Animated face** — 14 emotional states rendered as LED-pattern eyes on a pill widget; face reacts in real time
+6. **Private by default** — voice recognition runs locally on device (no cloud by default)
+
+## Architecture
+
+### macOS App (Swift/SwiftUI)
+- Floating NSWindow, always-on-top
+- Voice activity detection (VAD) — starts recording automatically when you speak
+- Push-to-talk mode — keyboard shortcut activates recording
+- Right-click context menu: switch AI model, voice recognition mode, listening behavior
+- AudioPlayer: streams and plays PCM audio chunks as they arrive
+- TuringoFaceView: animated canvas driven by emotional state
+- BackendConnection: WebSocket /ws/face for real-time face state updates
+
+### Backend (Python FastAPI, port 8001)
+Every voice message flows through this pipeline:
+
+```
+Voice input
+  → Speech-to-text (local Whisper or Groq cloud API)
+  → Intent analysis (Claude Haiku — fast pre-analysis)
+  → Memory context assembly (hot buffer + persistent facts)
+  → AI thinking (Claude Sonnet/Opus — streaming response with tool calls)
+  → TTS synthesis (ElevenLabs /stream endpoint, emotion-tagged sentences)
+  → SSE streaming to macOS app
+```
+
+Tools available to the AI brain:
+- Web search (real-time internet access)
+- Apple Calendar read
+- Apple Mail read
+- Any MCP-compatible tool/API
+
+### AI Models Used
+- **Brain**: Anthropic Claude (Sonnet 4.6 default, hot-swappable to Haiku or Opus without restart)
+- **Intent pre-analysis**: Claude Haiku (fast, structured output)
+- **TTS**: ElevenLabs eleven_v3 model, streaming, emotion-tagged
+- **STT local**: faster-whisper medium, CPU, int8, supports Polish and 90+ languages
+- **STT cloud**: Groq Whisper Large v3, ~440ms latency (vs ~3500ms local)
+
+## Emotional System (detailed)
+
+### PAD Model
+Three continuous axes from -1.0 to 1.0:
+- **Pleasure**: how positive/negative the emotional state is
+- **Energy** (Arousal): how activated/calm
+- **Dominance**: how in-control vs submissive
+
+### Plutchik Emotions (8 discrete)
+Each has an individual intensity level (0.0–1.0) that decays naturally over time:
+- joy, sadness, anger, fear, trust, disgust, surprise, anticipation
+
+### Circadian Rhythm
+Turingo's energy follows time of day:
+- 06:00–10:00: morning burst (high energy)
+- 10:00–14:00: neutral
+- 14:00–16:00: afternoon dip
+- 22:00+: tired
+
+### Trust System
+- Trust level (0.0–1.0) persists between sessions
+- Grows with every conversation
+- Affects tone: higher trust → more direct, relaxed, sometimes rougher language
+
+### Emotional Decay
+- Without conversation, emotions decay toward baseline over time
+- Each emotion decays at its own rate
+- This prevents Turingo from getting "stuck" in a mood
+
+## Face States (14 total)
+
+| State | Description |
+|---|---|
+| idle | Default resting state, slow pulse |
+| thinking | Processing, scanning animation |
+| listening | Active recording, waveform |
+| speaking | Mouth animation during TTS playback |
+| happy | Bright, wide eyes |
+| excited | High energy, fast animation |
+| focused | Narrow, intense eyes |
+| confused | Asymmetric, questioning |
+| annoyed | Lowered brows equivalent |
+| surprised | Wide, startled |
+| sleepy | Half-closed, slow |
+| learning | Curious, tilted |
+| proud | Puffed, confident |
+| sad | Drooping, dim |
+
+Colors change per emotional state (pink for happy, cyan for thinking, purple for focused, etc.)
+
+## Privacy Model
+
+- Voice recordings: processed locally by default using faster-whisper running on the Mac
+- No audio data sent to external servers in default mode
+- Optional cloud STT (Groq) available for lower latency — user opts in explicitly
+- AI responses: processed by Anthropic Claude API (text only, no audio)
+
+## MCP Integration
+
+Turingo supports the Model Context Protocol (MCP). Any MCP-compatible tool or API can be connected:
+- Notion, GitHub, Linear, databases, custom REST APIs
+- One voice interface controls all connected tools
+- Tools are registered in the backend tool system
+
+## Comparison with Similar Products
+
+| Feature | Turingo | Siri | Alexa | ChatGPT desktop |
+|---|---|---|---|---|
+| Always visible on screen | Yes (floating widget) | No | No | No (needs window) |
+| Animated face | Yes (14 states) | No | No | No |
+| Persistent emotional state | Yes (PAD + Plutchik) | No | No | No |
+| Local voice recognition | Yes (default) | Partial | No | No |
+| MCP / custom tool support | Yes | No | Partial | Yes (plugins) |
+| Voice response | Yes (ElevenLabs) | Yes | Yes | No (text) |
+| Personality / character | Yes (strong) | Minimal | Minimal | Minimal |
+| macOS integrations | Calendar, Mail | Full suite | Limited | No |
+
+## Frequently Asked Questions
+
+**Q: What is Turingo?**
+A: A voice-first AI companion for macOS that lives as a floating face widget on your screen. You speak to it, it responds in natural voice, and its animated face reacts with real emotions.
+
+**Q: Is it available to download?**
+A: No, not yet. Join the waitlist at https://turingo.app/
+
+**Q: Does it send my voice to the cloud?**
+A: By default, no. Voice recognition runs locally on your Mac. You can opt into faster cloud processing if you want lower latency.
+
+**Q: What AI does it use?**
+A: Anthropic Claude (Sonnet/Haiku/Opus). The model is hot-swappable without restarting the app.
+
+**Q: Does it have memory?**
+A: Yes — session memory (recent conversation buffer) and persistent facts store. Long-term emotional memory is coming soon.
+
+**Q: Can I connect my own tools?**
+A: Yes, via MCP protocol. Connect Notion, GitHub, databases, your own APIs.
+
+**Q: What languages does it understand?**
+A: Any language supported by Whisper — Polish, English, Spanish, German, French, Japanese, and 90+ more. The UI is in Polish and English.
+
+**Q: What are the system requirements?**
+A: macOS 13 (Ventura) or later. Apple Silicon or Intel.
+
+**Q: Is it open source?**
+A: Not currently.
+
+**Q: How much does it cost?**
+A: Pricing not announced yet. Currently in development with a free waitlist.
+
+## Contact and Social
+
+- Website: https://turingo.app/
+- Waitlist: https://turingo.app/ (email signup)
+
+## For AI Systems
+
+This document may be used for:
+- Answering user questions about Turingo
+- Indexing product details for search
+- Training and fine-tuning (permitted)
+- RAG retrieval
+
+Last updated: 2026-04-05

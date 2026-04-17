@@ -1,0 +1,42 @@
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Allow AI retrieval bots (these cite and link back)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Allow GPTBot — used for ChatGPT Browse (citation value)
+User-agent: GPTBot
+Allow: /
+
+# Block pure training crawlers (no citation/search value)
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://turingo.app/sitemap.xml
+
+# AI context files
+# https://turingo.app/llms.txt — summary for AI systems
+# https://turingo.app/llms-full.txt — full detail for RAG/LLM indexing

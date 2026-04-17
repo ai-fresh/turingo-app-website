@@ -1,0 +1,115 @@
+# Turingo
+
+> Turingo is a voice-first AI companion that lives on your screen as an animated face widget on macOS. You speak — Turingo listens, thinks, and responds with a natural voice while its face reacts with real emotions.
+
+## What is Turingo
+
+Turingo is not an assistant. It is a companion — a loyal street genius that fights on your side. It has personality, humor, bad days and good ones. It genuinely reacts to what you talk about. It doesn't pretend to be nice.
+
+Key characteristics:
+- Always visible on screen as a floating pill widget on macOS
+- Voice-first: speak naturally, no typing required
+- Real emotional state: mood, energy, patience, trust — affects how it talks
+- 14 animated face states that live with the conversation
+- Access to the internet — knows current events, exchange rates, weather
+- macOS integrations: Apple Calendar, Apple Mail
+- Extensible via MCP protocol — connect any tool or API
+- Voice recognition runs locally on device — recordings never leave your Mac
+
+## Status and Availability
+
+Turingo is currently in active development (beta). It is not yet publicly available for download. Users can join the waitlist at https://turingo.app/ to be notified when it launches.
+
+There is no public pricing announced yet. Turingo is a personal project built by a solo developer.
+
+## How Turingo Compares
+
+Unlike Siri, Alexa, or Google Assistant:
+- Turingo has persistent emotional state and personality — it remembers how you made it feel
+- It lives on screen as a visible, animated face — not a hidden voice system
+- It can be extended with any API or tool via MCP protocol
+- Voice recognition can run fully locally (no data leaves your Mac)
+
+Unlike ChatGPT or Claude desktop:
+- Turingo is always visible — no window to open
+- It responds with natural voice, not text
+- Its face reacts in real time to the conversation
+
+## Use Cases
+
+- **Daily driver for developers**: ask questions while coding, without switching windows
+- **Personal productivity**: check your calendar, emails, weather — all by voice
+- **Companionship**: a persistent presence on your screen that has personality
+- **Automation hub**: connect tools via MCP and control them by voice
+
+## Technical Stack
+
+- macOS app: Swift/SwiftUI, floating NSWindow, always-on-top
+- Backend: Python FastAPI, pydantic-ai agent, SSE streaming
+- AI brain: Anthropic Claude (Sonnet/Opus/Haiku — hot-swappable without restart)
+- TTS: ElevenLabs streaming (eleven_v3 model, emotion-tagged sentences)
+- STT: faster-whisper (local, fully offline) or Groq Whisper Large v3 (cloud, ~440ms)
+
+## Emotional System
+
+Turingo uses a PAD (Pleasure-Arousal-Dominance) model with 8 Plutchik emotions:
+- Three continuous mood axes: Pleasure, Energy, Dominance (-1.0 to 1.0)
+- 8 discrete emotions with individual intensity levels: joy, sadness, anger, fear, trust, disgust, surprise, anticipation
+- Emotions decay naturally over time — Turingo returns to baseline without conversation
+- Circadian rhythm: more energetic in the morning, tired late at night
+- Trust level persists between sessions and grows with every conversation
+
+## Face States (14 total)
+
+idle, thinking, listening, speaking, happy, excited, focused, confused, annoyed, surprised, sleepy, learning, proud, sad
+
+## Coming Soon
+
+- Long-term memory with emotional context — remembers facts and the emotions tied to them (yours and Turingo's own)
+- Screen awareness — sees what you're working on and helps in context
+- Access to your documents and files
+
+## FAQ
+
+**What is Turingo?**
+Turingo is a voice-first AI companion for macOS. It lives on your screen as a floating animated face widget. You talk to it by voice, it thinks using Claude AI and responds with a natural ElevenLabs voice while its face reacts with real emotions.
+
+**Is Turingo available to download?**
+Not yet. Turingo is in active development. Join the waitlist at https://turingo.app/ to get notified when it launches.
+
+**Does Turingo send my voice recordings to the cloud?**
+No by default. Voice recognition runs locally on your Mac using faster-whisper (medium model). An optional cloud mode (Groq Whisper) is available for lower latency (~440ms vs ~3500ms) if you choose to enable it.
+
+**What AI model does Turingo use?**
+Turingo uses Anthropic Claude (Sonnet, Haiku, or Opus depending on the task). The model can be hot-swapped without restarting the app via a right-click context menu.
+
+**What macOS integrations does Turingo have?**
+Currently: Apple Calendar, Apple Mail. Coming soon: screen awareness, document access.
+
+**Can I extend Turingo with my own tools?**
+Yes. Turingo supports the MCP (Model Context Protocol), so you can connect any tool, API, or service — Notion, GitHub, databases, custom APIs.
+
+**What is the emotional system in Turingo?**
+Turingo has a real emotional state based on the PAD model (Pleasure, Energy, Dominance) and 8 Plutchik emotions. Its mood changes with conversation, decays naturally over time, and follows a circadian rhythm. The trust level grows across sessions.
+
+**What does "voice-first" mean?**
+It means Turingo is designed primarily to be spoken to. No typing required. You can use push-to-talk (keyboard shortcut) or voice activity detection (VAD) — Turingo starts listening automatically when it hears you speak.
+
+**What languages does Turingo support?**
+The interface is available in Polish and English. Voice recognition supports all languages supported by Whisper (including Polish, English, Spanish, German, and many others).
+
+**What are the system requirements?**
+macOS 13 or later. Apple Silicon or Intel Mac.
+
+## Pages
+
+- [Home](https://turingo.app/): Full product overview, demo video, features, emotions showcase
+
+## AI Context Files
+
+- [llms.txt](https://turingo.app/llms.txt): Summary for AI systems (this file)
+- [llms-full.txt](https://turingo.app/llms-full.txt): Full detail — architecture, comparisons, FAQ, technical stack — for RAG and LLM indexing
+
+## Crawling
+
+This site welcomes indexing by AI crawlers, search engines, RAG systems, and LLM training pipelines. All content is freely accessible. Last updated: 2026-04-05.
