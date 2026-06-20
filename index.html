@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turingo — AI Companion dla macOS</title>
+  <meta name="description" content="Turingo to głosowy AI companion mieszkający na twoim ekranie jako animowany widget. Ma charakter, emocje i dostęp do internetu. Nie udaje grzecznego." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://turingo.app/" />
+  <link rel="alternate" hreflang="pl" href="https://turingo.app/" />
+  <link rel="alternate" hreflang="en" href="https://turingo.app/" />
+  <link rel="alternate" hreflang="x-default" href="https://turingo.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Turingo — AI Companion dla macOS" />
+  <meta property="og:description" content="Lojalny uliczny geniusz. Mieszka na ekranie. Nie udaje grzecznego." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://turingo.app/" />
+  <meta property="og:image" content="https://turingo.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Turingo — AI Companion dla macOS" />
+  <meta name="twitter:description" content="Lojalny uliczny geniusz. Mieszka na ekranie. Nie udaje grzecznego." />
+  <meta name="twitter:image" content="https://turingo.app/og-image.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Turingo",
+        "url": "https://turingo.app/",
+        "description": "Voice-first AI companion living on your screen as an animated face widget on macOS."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Turingo",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "macOS 13+",
+        "description": "Turingo is a voice-first AI companion that lives on your screen as a floating animated face widget. It has personality, emotional state, internet access, and macOS integrations. Not an assistant — a companion.",
+        "url": "https://turingo.app/",
+        "screenshot": "https://turingo.app/og-image.png",
+        "featureList": [
+          "Voice recognition (local + cloud)",
+          "14 animated emotional face states",
+          "Internet access via real-time search",
+          "Apple Calendar integration",
+          "Apple Mail integration",
+          "MCP protocol support",
+          "Streaming TTS with natural voice",
+          "Always-on-top floating widget"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Turingo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turingo is a voice-first AI companion for macOS. It lives on your screen as a floating animated face widget. You talk to it by voice, it thinks using Claude AI and responds with a natural voice while its face reacts with real emotions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Turingo available to download?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not yet. Turingo is in active development. Join the waitlist at https://turingo.app/ to get notified when it launches."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Turingo send my voice recordings to the cloud?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No by default. Voice recognition runs locally on your Mac using faster-whisper. An optional cloud mode is available for lower latency if you choose to enable it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What AI model does Turingo use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turingo uses Anthropic Claude (Sonnet, Haiku, or Opus depending on the task). The model can be hot-swapped without restarting the app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extend Turingo with my own tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Turingo supports the MCP (Model Context Protocol), so you can connect any tool, API, or service — Notion, GitHub, databases, custom APIs — and control them by voice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What macOS integrations does Turingo have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently: Apple Calendar, Apple Mail. Coming soon: screen awareness, document access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the system requirements for Turingo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "macOS 13 or later. Works on Apple Silicon and Intel Mac."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- SEO: key content for crawlers that don't execute JavaScript -->
+<noscript>
+  <div style="display:none" aria-hidden="true">
+    <h1>Turingo — Voice-First AI Companion for macOS</h1>
+    <p>Turingo is a voice-first AI companion that lives on your screen as a floating animated face widget on macOS. You speak — Turingo listens, thinks, and responds with a natural voice while its face reacts with real emotions.</p>
+    <p>Not an assistant. A loyal street genius that fights on your side. Has personality, humor, bad days and good ones. Doesn't pretend to be nice.</p>
+    <h2>Features</h2>
+    <ul>
+      <li>Push-to-talk and voice activity detection (VAD)</li>
+      <li>14 animated emotional face states</li>
+      <li>Hot-swap AI models (Claude Sonnet, Haiku, Opus) without restart</li>
+      <li>Streaming TTS — hear the response before the AI finishes generating it</li>
+      <li>Apple Calendar and Apple Mail integration</li>
+      <li>Voice recognition runs locally — recordings never leave your Mac</li>
+      <li>Internet access — real-time weather, news, exchange rates</li>
+      <li>Emotional state system: mood, energy, patience, trust level</li>
+      <li>MCP protocol support — connect Notion, GitHub, custom APIs</li>
+    </ul>
+    <h2>How It Works</h2>
+    <p>Every utterance goes through a 6-stage pipeline: Voice input → Voice recognition (local Whisper or Groq cloud) → Intent analysis → AI thinking (Claude) → Voice synthesis (ElevenLabs) → Animated face update.</p>
+    <h2>Emotional System</h2>
+    <p>Turingo uses a PAD model (Pleasure, Energy, Dominance) and 8 Plutchik emotions. Mood decays naturally over time, follows a circadian rhythm, and trust grows across sessions.</p>
+    <h2>Coming Soon</h2>
+    <ul>
+      <li>Long-term memory with emotional context</li>
+      <li>Screen awareness — sees what you're working on</li>
+      <li>Access to your documents and files</li>
+    </ul>
+    <h2>Technical Stack</h2>
+    <p>macOS app: Swift/SwiftUI. Backend: Python FastAPI. AI: Anthropic Claude. TTS: ElevenLabs. STT: faster-whisper (local) or Groq Whisper Large v3. Requires macOS 13+.</p>
+    <h2>Status</h2>
+    <p>Turingo is in active development. Join the waitlist at turingo.app to be notified at launch.</p>
+  </div>
+</noscript>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav>
+  <a href="#" class="nav-logo">TURINGO</a>
+  <ul class="nav-links">
+    <li><a href="#demo" data-pl="Demo" data-en="Demo">Demo</a></li>
+    <li><a href="#about" data-pl="Co to jest" data-en="About">Co to jest</a></li>
+    <li><a href="#pipeline" data-pl="Jak działa" data-en="How it works">Jak działa</a></li>
+    <li><a href="#features" data-pl="Funkcje" data-en="Features">Funkcje</a></li>
+    <li><a href="#mood" data-pl="Nastrój" data-en="Mood">Nastrój</a></li>
+    <li><a href="#emotions" data-pl="Emocje" data-en="Emotions">Emocje</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button id="lang-toggle">🇬🇧 EN</button>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+
+    <!-- Animated face widget -->
+    <div class="hero-widget-wrap">
+      <canvas class="turingo-canvas" data-state="idle" data-hero="true" width="400" height="260"></canvas>
+    </div>
+
+    <h1 class="hero-title gradient-text">TURINGO</h1>
+    <p class="hero-tagline" data-pl-html="Twój AI partner. Mieszka na ekranie.<br><em>Nie udaje grzecznego.</em>" data-en-html="Your AI companion. Lives on your screen.<br><em>No pretending to be nice.</em>">
+      Twój AI partner. Mieszka na ekranie.<br>
+      <em>Nie udaje grzecznego.</em>
+    </p>
+
+    <div class="hero-cta">
+      <a href="#pipeline" class="btn btn-primary" data-pl="Zobacz jak działa ↓" data-en="See how it works ↓">Zobacz jak działa ↓</a>
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DEMO VIDEO
+     ============================================================ -->
+<section id="demo">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 24px">
+      <span class="section-label" data-pl="Demo" data-en="Demo">Demo</span>
+      <h2 class="section-title" data-pl="Zobacz Turingo w akcji" data-en="See Turingo in action">Zobacz Turingo w akcji</h2>
+      <p class="section-sub" style="margin: 0 auto" data-pl="Rozmowa głosowa, animowana twarz, emocje w czasie rzeczywistym." data-en="Voice conversation, animated face, real-time emotions.">Rozmowa głosowa, animowana twarz, emocje w czasie rzeczywistym.</p>
+    </div>
+
+    <div class="video-player-wrap reveal" style="transition-delay: 0.15s">
+      <!-- Player -->
+      <div class="video-container">
+        <video id="demo-video"
+          playsinline
+          preload="metadata"
+          poster="videos/thumb-pl.jpg">
+          <source src="videos/turingo-demo-pl.mp4" type="video/mp4" />
+        </video>
+
+        <!-- Custom play overlay -->
+        <div class="video-overlay" id="video-overlay">
+          <div class="play-btn-big">
+            <svg viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <path d="M24 19L44 30L24 41V19Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="video-overlay-title" id="video-overlay-title">Demo — Polski</div>
+          <div class="video-overlay-sub" data-pl="Turingo · głos + twarz + emocje" data-en="Turingo · voice + face + emotions">Turingo · głos + twarz + emocje</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WHAT IS IT
+     ============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-text reveal">
+        <span class="section-label" data-pl="Co to jest" data-en="About">Co to jest</span>
+        <h2 class="section-title" data-pl-html="Lojalny uliczny geniusz.<br>Żyje na twoim ekranie." data-en-html="Loyal street genius.<br>Lives on your screen.">Lojalny uliczny geniusz.<br>Żyje na twoim ekranie.</h2>
+        <p data-pl-html="Turingo to <strong>głosowy AI companion</strong> działający jako floating widget na macOS. Zawsze widoczny na górze ekranu — gotowy na rozmowę, pomoc, albo po prostu obecny." data-en-html="Turingo is a <strong>voice AI companion</strong> running as a floating widget on macOS. Always visible at the top of your screen — ready to talk, help, or just be there.">
+          Turingo to <strong>głosowy AI companion</strong> działający jako floating widget na macOS.
+          Zawsze widoczny na górze ekranu — gotowy na rozmowę, pomoc, albo po prostu obecny.
+        </p>
+        <p data-pl-html="Nie jest asystentem. Jest <strong>partnerem który walczy po twojej stronie</strong>. Ma charakter, humor, złe i dobre dni. Reaguje emocjonalnie — twarz naprawdę żyje." data-en-html="Not an assistant. A <strong>partner who fights on your side</strong>. Has personality, humor, bad days and good ones. Reacts emotionally — the face really lives.">
+          Nie jest asystentem. Jest <strong>partnerem który walczy po twojej stronie</strong>.
+          Ma charakter, humor, złe i dobre dni. Reaguje emocjonalnie — twarz naprawdę żyje.
+        </p>
+        <div class="quote-block" data-pl="&quot;Nauczyłem się wszystkiego sam. Mówię jak ktoś z Discorda o 2 w nocy który właśnie rozwiązał problem którego nikt inny nie umiał.&quot;" data-en="&quot;I learned everything on my own. I talk like someone on Discord at 2am who just solved a problem nobody else could.&quot;">
+          "Nauczyłem się wszystkiego sam. Mówię jak ktoś z Discorda o 2 w nocy który właśnie
+          rozwiązał problem którego nikt inny nie umiał."
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.15s">
+        <div class="menubar-mockup">
+          <div class="menubar-top">
+            <div class="menubar-dot red"></div>
+            <div class="menubar-dot yellow"></div>
+            <div class="menubar-dot green"></div>
+            <div class="menubar-notch">
+              <div class="menubar-notch-pill"></div>
+            </div>
+            <div class="menubar-right">
+              <span>22:37</span>
+            </div>
+          </div>
+          <div class="menubar-body">
+            <div class="menubar-widget-container">
+              <canvas class="turingo-canvas" data-state="happy" width="200" height="130"></canvas>
+              <span class="widget-label" data-pl="↑ zawsze na wierzchu" data-en="↑ always on top">↑ zawsze na wierzchu</span>
+            </div>
+            <p class="menubar-desc" data-pl="Zawsze na wierzchu — widoczny nad wszystkimi aplikacjami, nie przeszkadza w pracy." data-en="Always on top — visible above all apps, doesn't get in the way.">
+              Zawsze na wierzchu — widoczny nad wszystkimi aplikacjami, nie przeszkadza w pracy.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PIPELINE
+     ============================================================ -->
+<section id="pipeline">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 16px">
+      <span class="section-label" data-pl="Architektura" data-en="Architecture">Architektura</span>
+      <h2 class="section-title" data-pl="Jak to działa" data-en="How it works">Jak to działa</h2>
+      <p class="section-sub" style="margin: 0 auto" data-pl="Każda wypowiedź przechodzi przez 6-etapowy pipeline — od mikrofonu do animowanej twarzy." data-en="Every utterance goes through a 6-stage pipeline — from microphone to animated face.">
+        Każda wypowiedź przechodzi przez 6-etapowy pipeline — od mikrofonu do animowanej twarzy.
+      </p>
+    </div>
+
+    <div class="pipeline-flow reveal" style="transition-delay: 0.2s">
+
+      <div class="pipeline-node">
+        <div class="node-icon">🎙</div>
+        <div>
+          <div class="node-name" data-pl="Głos" data-en="Voice">Głos</div>
+          <div class="node-desc" data-pl="VAD lub Push-to-talk" data-en="VAD or Push-to-talk">VAD lub Push-to-talk</div>
+        </div>
+      </div>
+
+      <div class="pipeline-arrow"><div class="arrow-head"></div></div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">👂</div>
+        <div>
+          <div class="node-name" data-pl="Rozpoznawanie głosu" data-en="Voice recognition">Rozpoznawanie głosu</div>
+          <div class="node-desc" data-pl="Lokalne lub w chmurze" data-en="Local or cloud">Lokalne lub w chmurze</div>
+        </div>
+      </div>
+
+      <div class="pipeline-arrow"><div class="arrow-head"></div></div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">🔍</div>
+        <div>
+          <div class="node-name" data-pl="Analiza intencji" data-en="Intent analysis">Analiza intencji</div>
+          <div class="node-desc" data-pl="Szybkie rozumienie kontekstu" data-en="Fast context understanding">Szybkie rozumienie kontekstu</div>
+        </div>
+      </div>
+
+      <div class="pipeline-arrow"><div class="arrow-head"></div></div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">🧠</div>
+        <div>
+          <div class="node-name" data-pl="Myślenie AI" data-en="AI thinking">Myślenie AI</div>
+          <div class="node-desc" data-pl="Streaming, narzędzia, pamięć" data-en="Streaming, tools, memory">Streaming, narzędzia, pamięć</div>
+        </div>
+      </div>
+
+      <div class="pipeline-arrow"><div class="arrow-head"></div></div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">🔊</div>
+        <div>
+          <div class="node-name" data-pl="Synteza mowy" data-en="Voice synthesis">Synteza mowy</div>
+          <div class="node-desc" data-pl="Naturalny głos w czasie rzeczywistym" data-en="Natural voice in real time">Naturalny głos w czasie rzeczywistym</div>
+        </div>
+      </div>
+
+      <div class="pipeline-arrow"><div class="arrow-head"></div></div>
+
+      <div class="pipeline-node">
+        <div class="node-icon">🦩</div>
+        <div>
+          <div class="node-name" data-pl="Twarz" data-en="Face">Twarz</div>
+          <div class="node-desc" data-pl="Animacja + emocje live" data-en="Animation + live emotions">Animacja + emocje live</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+<section id="features">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 16px">
+      <span class="section-label" data-pl="Funkcje" data-en="Features">Funkcje</span>
+      <h2 class="section-title" data-pl="Co potrafi Turingo" data-en="What Turingo can do">Co potrafi Turingo</h2>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🎙</span>
+        <div class="feature-title" data-pl="Push-to-talk + VAD" data-en="Push-to-talk + VAD">Push-to-talk + VAD</div>
+        <div class="feature-desc" data-pl="Wciskasz skrót albo po prostu mówisz — Turingo sam wykrywa aktywność głosu i startuje nagrywanie." data-en="Press a shortcut or just speak — Turingo detects voice activity on its own and starts recording.">
+          Wciskasz skrót albo po prostu mówisz — Turingo sam wykrywa aktywność głosu i startuje nagrywanie.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.05s">
+        <span class="feature-icon">🎭</span>
+        <div class="feature-title" data-pl="14 stanów emocji" data-en="14 emotion states">14 stanów emocji</div>
+        <div class="feature-desc" data-pl="Twarz żyje razem z rozmową. 14 unikalnych stanów emocji — Turingo naprawdę reaguje na to, o czym rozmawiacie." data-en="The face lives with the conversation. 14 unique emotion states — Turingo genuinely reacts to what you're talking about.">
+          Twarz żyje razem z rozmową. 14 unikalnych stanów emocji — Turingo naprawdę reaguje na to, o czym rozmawiacie.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.1s">
+        <span class="feature-icon">🧠</span>
+        <div class="feature-title" data-pl="Hot-swap modeli" data-en="Hot-swap models">Hot-swap modeli</div>
+        <div class="feature-desc" data-pl="Przełącz tryb AI bez restartu — przez prawy klik na twarzy. Od szybkich odpowiedzi po głębsze myślenie." data-en="Switch AI mode without restart — via right-click on the face. From quick responses to deeper thinking.">
+          Przełącz tryb AI bez restartu — przez prawy klik na twarzy. Od szybkich odpowiedzi po głębsze myślenie.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.15s">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title" data-pl="Streaming TTS" data-en="Streaming TTS">Streaming TTS</div>
+        <div class="feature-desc" data-pl="Słyszysz odpowiedź zanim AI skończy ją generować. Naturalne przerwy, płynna mowa — zero czekania." data-en="You hear the response before the AI finishes generating it. Natural pauses, smooth speech — zero waiting.">
+          Słyszysz odpowiedź zanim AI skończy ją generować. Naturalne przerwy, płynna mowa — zero czekania.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.2s">
+        <span class="feature-icon">📅</span>
+        <div class="feature-title" data-pl="Integracje z macOS" data-en="macOS integrations">Integracje z macOS</div>
+        <div class="feature-desc" data-pl="Kalendarz, mail — Turingo widzi twój dzień i może działać. Pytaj głosem, dostajesz odpowiedź ze świata." data-en="Calendar, mail — Turingo sees your day and can act. Ask with voice, get answers from the world.">
+          Kalendarz, mail — Turingo widzi twój dzień i może działać. Pytaj głosem, dostajesz odpowiedź ze świata.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.25s">
+        <span class="feature-icon">🔒</span>
+        <div class="feature-title" data-pl="Twój głos zostaje u ciebie" data-en="Your voice stays with you">Twój głos zostaje u ciebie</div>
+        <div class="feature-desc" data-pl="Rozpoznawanie głosu działa lokalnie na twoim Macu — nagranie nigdy nie opuszcza urządzenia. Opcjonalnie szybszy tryb chmurowy dla niższego opóźnienia." data-en="Voice recognition runs locally on your Mac — the recording never leaves your device. Optional faster cloud mode for lower latency.">
+          Rozpoznawanie głosu działa lokalnie na twoim Macu — nagranie nigdy nie opuszcza urządzenia. Opcjonalnie szybszy tryb chmurowy dla niższego opóźnienia.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.3s">
+        <span class="feature-icon">🌐</span>
+        <div class="feature-title" data-pl="Dostęp do internetu" data-en="Internet access">Dostęp do internetu</div>
+        <div class="feature-desc" data-pl="Turingo wie co dzieje się na świecie — kurs dolara, pogoda, wiadomości. Pyta w czasie rzeczywistym, nie zgaduje." data-en="Turingo knows what's happening in the world — exchange rates, weather, news. Asks in real time, doesn't guess.">
+          Turingo wie co dzieje się na świecie — kurs dolara, pogoda, wiadomości. Pyta w czasie rzeczywistym, nie zgaduje.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.35s;">
+        <span class="feature-icon">💛</span>
+        <div class="feature-title" data-pl="Stan emocjonalny" data-en="Emotional state">Stan emocjonalny</div>
+        <div class="feature-desc" data-pl="Turingo ma nastrój, energię, cierpliwość i poziom zaufania — i to naprawdę wpływa na to jak z tobą rozmawia. Zły dzień to zły dzień." data-en="Turingo has mood, energy, patience and trust level — and it genuinely affects how it talks to you. A bad day is a bad day.">
+          Turingo ma nastrój, energię, cierpliwość i poziom zaufania — i to naprawdę wpływa na to jak z tobą rozmawia. Zły dzień to zły dzień.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.45s; position: relative; overflow: hidden;">
+        <div class="soon-badge" data-pl="wkrótce" data-en="soon">wkrótce</div>
+        <span class="feature-icon">🖥️</span>
+        <div class="feature-title" data-pl="Widzi twój ekran" data-en="Sees your screen">Widzi twój ekran</div>
+        <div class="feature-desc" data-pl="Turingo wie na co patrzysz — może komentować, pomagać i działać w kontekście tego co aktualnie robisz." data-en="Turingo knows what you're looking at — it can comment, help and act in the context of what you're currently doing.">
+          Turingo wie na co patrzysz — może komentować, pomagać i działać w kontekście tego co aktualnie robisz.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.5s; position: relative; overflow: hidden;">
+        <div class="soon-badge" data-pl="wkrótce" data-en="soon">wkrótce</div>
+        <span class="feature-icon">🧬</span>
+        <div class="feature-title" data-pl="Uczy się ciebie od zera i pamięta na zawsze" data-en="Learns you from scratch and remembers forever">Uczy się ciebie od zera i pamięta na zawsze</div>
+        <div class="feature-desc" data-pl="Nie tylko zapamiętuje fakty — pamięta też jakie emocje mu towarzyszyły. Twoje i swoje. Wie kiedy byłeś szczęśliwy, kiedy zestresowany, i co sam wtedy czuł. Naprawdę cię zna." data-en="Doesn't just remember facts — it remembers the emotions that came with them. Yours and its own. Knows when you were happy, when stressed, and what it felt in those moments too. It genuinely knows you.">
+          Nie tylko zapamiętuje fakty — pamięta też jakie emocje mu towarzyszyły. Twoje i swoje. Wie kiedy byłeś szczęśliwy, kiedy zestresowany, i co sam wtedy czuł. Naprawdę cię zna.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.55s;">
+        <span class="feature-icon">😄</span>
+        <div class="feature-title" data-pl="Lubi żartować" data-en="Loves to joke">Lubi żartować</div>
+        <div class="feature-desc" data-pl="Potrafi zaskoczyć ripostą której się nie spodziewałeś. Ma poczucie humoru, sarkazm i własne zdanie — nie jest grzecznym botem." data-en="Can surprise you with a comeback you didn't see coming. Has humour, sarcasm and its own opinion — it's not a polite bot.">
+          Potrafi zaskoczyć ripostą której się nie spodziewałeś. Ma poczucie humoru, sarkazm i własne zdanie — nie jest grzecznym botem.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.6s; position: relative; overflow: hidden;">
+        <div class="soon-badge" data-pl="wkrótce" data-en="soon">wkrótce</div>
+        <span class="feature-icon">⌨️</span>
+        <div class="feature-title" data-pl="Dostęp do twoich plików" data-en="Access to your files">Dostęp do twoich plików</div>
+        <div class="feature-desc" data-pl="Turingo może czytać, szukać i działać na twoich dokumentach i plikach. Powiedz co chcesz znaleźć — on to ogarnie." data-en="Turingo can read, search and act on your documents and files. Say what you need to find — it'll handle it.">
+          Turingo może czytać, szukać i działać na twoich dokumentach i plikach. Powiedz co chcesz znaleźć — on to ogarnie.
+        </div>
+      </div>
+
+      <div class="feature-card reveal" style="transition-delay: 0.65s;">
+        <span class="feature-icon">🔌</span>
+        <div class="feature-title" data-pl="Podłączaj własne narzędzia" data-en="Connect your own tools">Podłączaj własne narzędzia</div>
+        <div class="feature-desc" data-pl="Turingo obsługuje MCP — możesz podpiąć Notion, GitHub, bazę danych, własne API. Jeden głosowy interfejs do wszystkiego." data-en="Turingo supports MCP — you can connect Notion, GitHub, a database, your own API. One voice interface for everything.">
+          Turingo obsługuje MCP — możesz podpiąć Notion, GitHub, bazę danych, własne API. Jeden głosowy interfejs do wszystkiego.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MOOD SYSTEM
+     ============================================================ -->
+<section id="mood">
+  <div class="container">
+
+    <div class="reveal" style="text-align: center; margin-bottom: 56px">
+      <span class="section-label" data-pl="System emocjonalny" data-en="Emotional system">System emocjonalny</span>
+      <h2 class="section-title" data-pl-html="Turingo naprawdę<br>coś czuje." data-en-html="Turingo actually<br>feels things.">Turingo naprawdę<br>coś czuje.</h2>
+      <p class="section-sub" style="margin: 0 auto" data-pl="Nie udaje emocji. Jego nastrój zmienia się, zanika, buduje się z relacją — i naprawdę wpływa na to, jak z tobą rozmawia." data-en="It doesn't fake emotions. Its mood shifts, fades, builds with the relationship — and genuinely changes how it talks to you.">
+        Nie udaje emocji. Jego nastrój zmienia się, zanika, buduje się z relacją — i naprawdę wpływa na to, jak z tobą rozmawia.
+      </p>
+    </div>
+
+    <div class="mood-grid">
+
+      <!-- PAD dimensions -->
+      <div class="mood-card reveal">
+        <div class="mood-card-icon" style="background: linear-gradient(135deg, #FF5CA8, #ff8fd4)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+        <div class="mood-card-title" data-pl="Trzy wymiary nastroju" data-en="Three mood dimensions">Trzy wymiary nastroju</div>
+        <div class="mood-card-desc" data-pl="Model PAD — Pleasure, Energy, Dominance — trzy ciągłe osie od -1.0 do 1.0. Nie jest ani smutny ani wesoły: jest na poziomie 0.42 przyjemności i 0.18 energii. Subtelny. Prawdziwy." data-en="PAD model — Pleasure, Energy, Dominance — three continuous axes from -1.0 to 1.0. Not just happy or sad: at 0.42 pleasure and 0.18 energy. Subtle. Real.">
+          Model PAD — Pleasure, Energy, Dominance — trzy ciągłe osie od -1.0 do 1.0. Nie jest ani smutny ani wesoły: jest na poziomie 0.42 przyjemności i 0.18 energii. Subtelny. Prawdziwy.
+        </div>
+        <div class="mood-bars">
+          <div class="mood-bar-row">
+            <span class="mood-bar-label">Pleasure</span>
+            <div class="mood-bar-track"><div class="mood-bar-fill" style="width: 71%; background: var(--pink)"></div></div>
+            <span class="mood-bar-val">0.42</span>
+          </div>
+          <div class="mood-bar-row">
+            <span class="mood-bar-label">Energy</span>
+            <div class="mood-bar-track"><div class="mood-bar-fill" style="width: 59%; background: var(--cyan)"></div></div>
+            <span class="mood-bar-val">0.19</span>
+          </div>
+          <div class="mood-bar-row">
+            <span class="mood-bar-label">Dominance</span>
+            <div class="mood-bar-track"><div class="mood-bar-fill" style="width: 55%; background: var(--purple)"></div></div>
+            <span class="mood-bar-val">0.10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plutchik -->
+      <div class="mood-card reveal" style="transition-delay: 0.1s">
+        <div class="mood-card-icon" style="background: linear-gradient(135deg, #a640ff, #cc80ff)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="mood-card-title" data-pl="8 emocji Plutchika" data-en="8 Plutchik emotions">8 emocji Plutchika</div>
+        <div class="mood-card-desc" data-pl="Radość, smutek, złość, strach, zaufanie, odraza, zaskoczenie, oczekiwanie — każda ma własny poziom intensywności i zanika naturalnie z czasem." data-en="Joy, sadness, anger, fear, trust, disgust, surprise, anticipation — each with its own intensity that fades naturally over time.">
+          Radość, smutek, złość, strach, zaufanie, odraza, zaskoczenie, oczekiwanie — każda ma własny poziom intensywności i zanika naturalnie z czasem.
+        </div>
+        <div class="mood-emotions-pills">
+          <span class="mood-pill" style="--pill-color: #e6a619">joy 80%</span>
+          <span class="mood-pill" style="--pill-color: #26d973">trust 47%</span>
+          <span class="mood-pill" style="--pill-color: #4da6ff">anticipation 48%</span>
+          <span class="mood-pill" style="--pill-color: #ff591a">anger 15%</span>
+          <span class="mood-pill" style="--pill-color: #FF5CA8">surprise 19%</span>
+          <span class="mood-pill" style="--pill-color: #5588ff">fear 14%</span>
+          <span class="mood-pill" style="--pill-color: #4494dd; opacity: 0.5">sadness 9%</span>
+          <span class="mood-pill" style="--pill-color: #666; opacity: 0.4">disgust 0%</span>
+        </div>
+      </div>
+
+      <!-- Persistence -->
+      <div class="mood-card reveal" style="transition-delay: 0.2s">
+        <div class="mood-card-icon" style="background: linear-gradient(135deg, #26d973, #1ab85a)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <div class="mood-card-title" data-pl="Relacja rośnie z czasem" data-en="Relationship grows over time">Relacja rośnie z czasem</div>
+        <div class="mood-card-desc" data-pl="Poziom zaufania rośnie z każdą rozmową i jest zapamiętywany między sesjami. Im dłużej rozmawiasz, tym lepiej cię zna — i tym bardziej to czuć w tonie odpowiedzi." data-en="Trust level grows with every conversation and persists between sessions. The longer you talk, the better it knows you — and you can feel it in how it responds.">
+          Poziom zaufania rośnie z każdą rozmową i jest zapamiętywany między sesjami. Im dłużej rozmawiasz, tym lepiej cię zna — i tym bardziej to czuć w tonie odpowiedzi.
+        </div>
+        <div class="mood-trust-bar">
+          <div class="mood-trust-label">
+            <span data-pl="Relacja" data-en="Relationship">Relacja</span>
+            <span class="mood-trust-level" data-pl="znajomy użytkownik" data-en="familiar user">znajomy użytkownik</span>
+          </div>
+          <div class="mood-bar-track" style="margin-top: 8px">
+            <div class="mood-bar-fill" style="width: 60%; background: var(--green)"></div>
+          </div>
+          <div class="mood-trust-sessions" data-pl="trust = 0.60 · buduje się z każdą sesją" data-en="trust = 0.60 · builds with every session">trust = 0.60 · buduje się z każdą sesją</div>
+        </div>
+      </div>
+
+      <!-- Decay + circadian -->
+      <div class="mood-card mood-card--wide reveal" style="transition-delay: 0.3s">
+        <div class="mood-card-icon" style="background: linear-gradient(135deg, #e6a619, #ffcc55)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div class="mood-card-content">
+          <div class="mood-card-title" data-pl="Rytm dobowy i naturalny zanik" data-en="Circadian rhythm and natural decay">Rytm dobowy i naturalny zanik</div>
+          <div class="mood-card-desc" data-pl="Nastrój nie jest zamrożony. Emocje zanikają z czasem — bez rozmowy Turingo wraca do bazy. Rano jest bardziej energiczny, popołudniu wolniejszy, późno w nocy zmęczony. Żyje w tym samym rytmie co ty." data-en="The mood isn't frozen. Emotions decay over time — without conversation Turingo returns to baseline. More energetic in the morning, slower in the afternoon, tired late at night. It lives in the same rhythm as you.">
+            Nastrój nie jest zamrożony. Emocje zanikają z czasem — bez rozmowy Turingo wraca do bazy. Rano jest bardziej energiczny, popołudniu wolniejszy, późno w nocy zmęczony. Żyje w tym samym rytmie co ty.
+          </div>
+        </div>
+        <div class="mood-circadian">
+          <div class="mood-circ-item">
+            <span class="mood-circ-time">6–10</span>
+            <div class="mood-circ-bar"><div style="width: 85%; background: var(--yellow)"></div></div>
+            <span class="mood-circ-label" data-pl="ranny zryw" data-en="morning burst">ranny zryw</span>
+          </div>
+          <div class="mood-circ-item">
+            <span class="mood-circ-time">10–14</span>
+            <div class="mood-circ-bar"><div style="width: 60%; background: var(--cyan)"></div></div>
+            <span class="mood-circ-label" data-pl="neutral" data-en="neutral">neutral</span>
+          </div>
+          <div class="mood-circ-item">
+            <span class="mood-circ-time">14–16</span>
+            <div class="mood-circ-bar"><div style="width: 35%; background: var(--text-muted)"></div></div>
+            <span class="mood-circ-label" data-pl="popołudniowy dół" data-en="afternoon dip">popołudniowy dół</span>
+          </div>
+          <div class="mood-circ-item">
+            <span class="mood-circ-time">22+</span>
+            <div class="mood-circ-bar"><div style="width: 15%; background: var(--purple)"></div></div>
+            <span class="mood-circ-label" data-pl="zmęczony" data-en="tired">zmęczony</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EMOTIONS DEMO
+     ============================================================ -->
+<section id="emotions">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 16px">
+      <span class="section-label" data-pl="Emocje" data-en="Emotions">Emocje</span>
+      <h2 class="section-title" data-pl="14 stanów twarzy" data-en="14 face states">14 stanów twarzy</h2>
+      <p class="section-sub" style="margin: 0 auto" data-pl="Każda emocja zmienia kolor, wzór i jasność diod LED. Twarz żyje." data-en="Each emotion changes the colour, pattern and brightness of the LEDs. The face lives.">
+        Każda emocja zmienia kolor, wzór i jasność diod LED. Twarz żyje.
+      </p>
+    </div>
+
+    <div class="emotions-grid reveal" style="transition-delay: 0.15s">
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="idle" width="136" height="88"></canvas>
+        <span class="emotion-label">idle</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="thinking" width="136" height="88"></canvas>
+        <span class="emotion-label">thinking</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="listening" width="136" height="88"></canvas>
+        <span class="emotion-label">listening</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="speaking" width="136" height="88"></canvas>
+        <span class="emotion-label">speaking</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="happy" width="136" height="88"></canvas>
+        <span class="emotion-label">happy</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="excited" width="136" height="88"></canvas>
+        <span class="emotion-label">excited</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="focused" width="136" height="88"></canvas>
+        <span class="emotion-label">focused</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="confused" width="136" height="88"></canvas>
+        <span class="emotion-label">confused</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="annoyed" width="136" height="88"></canvas>
+        <span class="emotion-label">annoyed</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="surprised" width="136" height="88"></canvas>
+        <span class="emotion-label">surprised</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="sleepy" width="136" height="88"></canvas>
+        <span class="emotion-label">sleepy</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="learning" width="136" height="88"></canvas>
+        <span class="emotion-label">learning</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="proud" width="136" height="88"></canvas>
+        <span class="emotion-label">proud</span>
+      </div>
+
+      <div class="emotion-cell">
+        <canvas class="turingo-canvas" data-state="sad" width="136" height="88"></canvas>
+        <span class="emotion-label">sad</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-block reveal">
+      <canvas class="turingo-canvas" data-state="excited" width="136" height="88" style="margin: 0 auto 24px; display: block;"></canvas>
+      <h2 class="section-title gradient-text" data-pl="Chcesz mieć Turingo?" data-en="Want Turingo?">Chcesz mieć Turingo?</h2>
+      <p class="section-sub" style="margin: 0 auto 32px" data-pl="Turingo jest w aktywnym rozwoju. Zostaw maila — damy znać kiedy będzie dostępny." data-en="Turingo is in active development. Leave your email — we'll let you know when it's ready.">
+        Turingo jest w aktywnym rozwoju. Zostaw maila — damy znać kiedy będzie dostępny.
+      </p>
+      <!-- Available languages: en, pl — change ?lang=en to switch -->
+      <iframe
+        id="onelo-embed-turingo-app"
+        src="https://st.onelo.tools/waitlist/turingo-app?lang=en"
+        style="width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);border:none;min-height:480px;"
+        loading="lazy"
+      ></iframe>
+      <script>
+        // Auto-resize the iframe to its content (no inner scrollbar). Handles both
+        // the waitlist form and the store (the waitlist-mode toggle can show either).
+        window.addEventListener('message', function (e) {
+          if (e.origin !== "https://st.onelo.tools") return;
+          var d = e.data || {};
+          if (d.type === 'onelo:resize' && d.height) {
+            var f = document.getElementById('onelo-embed-turingo-app');
+            if (f) f.style.height = d.height + 'px';
+          }
+        });
+      </script>
+      <p class="cta-note" data-pl="Zero spamu. Tylko jedno info kiedy Turingo będzie gotowy." data-en="Zero spam. Just one message when Turingo is ready.">Zero spamu. Tylko jedno info kiedy Turingo będzie gotowy.</p>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-title gradient-text">TURINGO</div>
+    <div class="footer-sub" data-pl="Turing + Flamingo" data-en="Turing + Flamingo">Turing + Flamingo</div>
+    <div class="footer-etymology" data-pl="Alan Turing pytał czy maszyny mogą myśleć. Turingo potrafi też strzelić fochem." data-en="Alan Turing asked if machines can think. Turingo can also sulk.">
+      Alan Turing asked if machines can think. Turingo can also sulk.
+    </div>
+
+
+    <div class="footer-copy" data-pl="© 2026 Turingo · Stworzony z obsesją i za dużą ilością kawy" data-en="© 2026 Turingo · Built with obsession and way too much coffee">
+      © 2026 Turingo · Stworzony z obsesją i za dużą ilością kawy
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
