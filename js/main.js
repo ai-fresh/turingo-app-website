@@ -666,8 +666,8 @@ function applyLang(lang) {
   });
 
   document.title = lang === 'en'
-    ? 'Turingo — AI Companion for macOS'
-    : 'Turingo — AI Companion dla macOS';
+    ? 'Turingo — coordinator for Claude Code and Codex on macOS'
+    : 'Turingo — koordynator Claude Code i Codex dla macOS';
 
   const btn = document.getElementById('lang-toggle');
   if (btn) btn.textContent = lang === 'pl' ? '🇬🇧 EN' : '🇵🇱 PL';
