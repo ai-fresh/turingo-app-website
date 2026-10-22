@@ -676,7 +676,7 @@ function applyLang(lang) {
 
   const waitlistFrame = document.getElementById('onelo-embed-turingo-app');
   if (waitlistFrame) {
-    waitlistFrame.src = `https://st.onelo.tools/waitlist/turingo-app?lang=${lang}`;
+    waitlistFrame.src = `https://onelo.tools/waitlist/turingo?lang=${lang}`;
   }
 }
 
